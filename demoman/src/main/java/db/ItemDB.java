@@ -1,6 +1,7 @@
 package db;
 
 import bo.Item;
+import bean.ItemBean;
 
 import java.sql.*;
 import java.util.Collection;
@@ -35,7 +36,7 @@ public class ItemDB extends Item{
         Statement st;
         ResultSet rs;
         try{
-            String query = "insert into T_item (name, descripton, cart_nr)" + "values (?,?,?)";
+            String query = "insert into T_Item (name, description, cart_nr)" + "values (?,?,?)";
             con = DBManager.getConnection();
             //st = con.createStatement();
             //rs = st.executeQuery("select id, name, description, cart_nr from T_ITEM");
@@ -45,7 +46,7 @@ public class ItemDB extends Item{
             preparedStmt.setString(1,name);
             preparedStmt.setString(2,description);
             preparedStmt.setInt(3,cart_nr);
-            preparedStmt.execute();
+            preparedStmt.executeUpdate();
 
             //con.close();
             //st.close();

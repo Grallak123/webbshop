@@ -27,7 +27,8 @@
 </head>
 <body>
 <br>
-Welcome to the Webb Shop<br><br>
+<% String theUserName = (String)session.getAttribute("username");%>
+Welcome to the Webb Shop <% out.print(theUserName);%><br><br>
 
 
 <h2>Cart table</h2>
@@ -47,34 +48,22 @@ Welcome to the Webb Shop<br><br>
 
 <% } %>
 </table>
-<%  String x1 = "kex";
+<%/*  String x1 = "kex";
     String x2 = "kex smakar gott";
-    int x3 = 1;
+    int x3 = 1;*/
 %>
-<button onclick="<%ItemDB.addItem(x1,x2,x3); %>">Click me</button>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-<input type="text1" value="item name sak">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-<input type="text2" value="item description hug">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-<input type="text3" value="item cart ved">
-
-<script>
-    /*function myFunction() {
-        var x1 = document.getElementById("text1").value;
-        document.getElementById("demo").innerHTML = x1;
-        var x2 = document.getElementById("text2").value;
-        document.getElementById("demo").innerHTML = x2;
-        var x3 = document.getElementById("text3").value;
-        document.getElementById("demo").innerHTML = x3;
-    }*/
-</script>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <br>
+<br>
+
+
+<form action="webbshopitemprocess.jsp" method="post">
+    Item name:<input type="text" name="name"/><br/><br/>
+    Item description:<input type="text" name="description"/><br/><br/>
+    Cart nr<input type="text" name="cart_nr"/><br/><br/>
+    <input type="submit" value="submit"/>"
+</form>
 
 <h2>Cart table</h2>
 
@@ -82,7 +71,10 @@ Welcome to the Webb Shop<br><br>
 <% Collection<CartInfo> carts = CartHandler.getcartsWithGroup("");
     Iterator<CartInfo> it2 = carts.iterator();
     for(; it2.hasNext();) {
-        CartInfo cart = it2.next(); %>
+        CartInfo cart = it2.next();
+        //request.getParameterNames();
+        //session.setAttribute();
+%>
 
 <tr>
     <th>Cart: <%= cart.getId_cart() %> </th>

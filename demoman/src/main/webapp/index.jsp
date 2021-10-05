@@ -7,5 +7,6 @@
 </head>
 <body>
  The index page cats
+    <a href="login.jsp"> Login</a>
 </body>
 </html>
