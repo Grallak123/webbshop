@@ -31,7 +31,8 @@
 Welcome to the Webb Shop <% out.print(theUserName);%><br><br>
 
 
-<h2>Cart table</h2>
+
+<h2>Item table</h2>
 
 <table style="width:100%">
 <% Collection<ItemInfo> items = ItemHandler.getItemsWithGroup("");

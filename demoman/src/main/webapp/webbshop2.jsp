@@ -23,21 +23,23 @@
     }
 </style>
 <head>
-    <tile><h1>WEBBLER</h1></tile>
+    <tile><h1>WEBBLER 2</h1></tile>
 </head>
 <body>
 <br>
+<% int theUserId = (int) session.getAttribute("userId"); %>
 <% String theUserName = (String)session.getAttribute("username");%>
-Welcome to the Webb Shop <% out.print(theUserName);%><br><br>
+Welcome to the Webb Shop <% out.print(theUserName);%> <% out.print(theUserId);%><br><br>
+<%= request.getParameter("username") %>
 
 
 <h2>Item table</h2>
 
 <table style="width:100%">
-<% Collection<ItemInfo> items = ItemHandler.getItemsWithGroup("");
-    Iterator<ItemInfo> it = items.iterator();
-    for(; it.hasNext();) {
-        ItemInfo item = it.next(); %>
+    <% Collection<ItemInfo> items = ItemHandler.findUserItems(theUserId);
+        Iterator<ItemInfo> it = items.iterator();
+        for(; it.hasNext();) {
+            ItemInfo item = it.next(); %>
     <tr>
         <th>Item: <%= item.getId() %></th>
         <th>Item name: <%= item.getName() %></th>
@@ -46,12 +48,8 @@ Welcome to the Webb Shop <% out.print(theUserName);%><br><br>
 
     </tr>
 
-<% } %>
+    <% } %>
 </table>
-<%/*  String x1 = "kex";
-    String x2 = "kex smakar gott";
-    int x3 = 1;*/
-%>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <br>
@@ -65,44 +63,6 @@ Welcome to the Webb Shop <% out.print(theUserName);%><br><br>
     <input type="submit" value="submit"/>"
 </form>
 
-<h2>Cart table</h2>
-
-<table style="width:100%">
-<% Collection<CartInfo> carts = CartHandler.getcartsWithGroup("");
-    Iterator<CartInfo> it2 = carts.iterator();
-    for(; it2.hasNext();) {
-        CartInfo cart = it2.next();
-        //request.getParameterNames();
-        //session.setAttribute();
-%>
-
-<tr>
-    <th>Cart: <%= cart.getId_cart() %> </th>
-    <th>Cart User: <%= cart.getCart_user() %></th>
-</tr>
-
-<% } %>
-</table>
-<br>
-<h2>User table</h2>
-
-<table style="width:100%">
-<% Collection<UserInfo> users = UserHandler.getUsersWithGroup("");
-    Iterator<UserInfo> it3 = users.iterator();
-    for(; it3.hasNext();) {
-        UserInfo user = it3.next(); %>
-
-
-    <tr>
-        <th>User: <%= user.getId_user() %></th>
-        <th>User_cart: <%= user.getUser_cart() %></th>
-        <th>Username: <%= user.getUsername() %></th>
-        <th>User_password: <%= user.getUser_password() %></th>
-    </tr>
-
-
-<% } %>
-</table>
 <br>
 
 </body>

@@ -15,6 +15,10 @@ public class Item {
         return ItemDB.searchItems(group);
     }
 
+    static public Collection findUserItems(int id_user){
+        return ItemDB.findUserItems(id_user);
+    }
+
     protected Item(int id, String name, String desc, int cart_nr){
         this.id = id;
         this.name = name;
