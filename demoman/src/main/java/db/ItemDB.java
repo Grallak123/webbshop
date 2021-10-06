@@ -56,11 +56,17 @@ public class ItemDB extends Item{
 
     public static Collection findUserItems(int id_user){
         Vector v3 = new Vector();
-        Connection con;
-        Statement st;
-        ResultSet rs;
+
         System.out.println(id_user + " hek3");
         try{
+
+            Connection con2 = DBManager.getConnection();
+            Statement st2 = con2.createStatement();
+            ResultSet rs2 = st2.executeQuery("select id, name, description, cart_nr " +
+                    "from T_ITEM where cart_nr = " + id_user);
+
+
+            /*
             //String query = "select id, name, description, cart_nr from T_ITEM where cart_nr = id_user";
             con = DBManager.getConnection();
             //Statement st2 = con.createStatement();
@@ -69,7 +75,7 @@ public class ItemDB extends Item{
             //ResultSet rs2 = st2.executeQuery("select id, name, description, cart_nr from T_ITEM where cart_nr = ?");
             PreparedStatement preparedStmt2 = con.prepareStatement(query2);
             preparedStmt2.setInt(1,id_user);
-            ResultSet rs2 = preparedStmt2.executeQuery(query2);
+            ResultSet rs2 = preparedStmt2.executeQuery(query2);*/
 
             while(rs2.next()){
                 int i = rs2.getInt("id");

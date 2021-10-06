@@ -26,10 +26,11 @@
     <tile><h1>WEBBLER</h1></tile>
 </head>
 <body>
+<a href="login.jsp"> Log out</a>
 <br>
 <% String theUserName = (String)session.getAttribute("username");%>
-Welcome to the Webb Shop <% out.print(theUserName);%><br><br>
-
+<% int theUserId = (int)session.getAttribute("userId");%>
+Welcome to the Webb Shop <% out.print(theUserName + " " + theUserId);%><br><br>
 
 
 <h2>Item table</h2>

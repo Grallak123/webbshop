@@ -26,11 +26,12 @@
     <tile><h1>WEBBLER 2</h1></tile>
 </head>
 <body>
+<a href="login.jsp"> Log out</a>
 <br>
 <% int theUserId = (int) session.getAttribute("userId"); %>
 <% String theUserName = (String)session.getAttribute("username");%>
 Welcome to the Webb Shop <% out.print(theUserName);%> <% out.print(theUserId);%><br><br>
-<%= request.getParameter("username") %>
+
 
 
 <h2>Item table</h2>
@@ -59,7 +60,7 @@ Welcome to the Webb Shop <% out.print(theUserName);%> <% out.print(theUserId);%>
 <form action="webbshopitemprocess.jsp" method="post">
     Item name:<input type="text" name="name"/><br/><br/>
     Item description:<input type="text" name="description"/><br/><br/>
-    Cart nr<input type="text" name="cart_nr"/><br/><br/>
+
     <input type="submit" value="submit"/>"
 </form>
 
